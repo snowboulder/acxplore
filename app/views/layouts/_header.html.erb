@@ -1,12 +1,20 @@
 <header class="navbar navbar-fixed-top navbar">
     <div class="container">
-      <%= link_to "Acxplore", root_path, id: "logo", :style =>'color:#555555;' %>
+      <%= link_to "Acxplore",     root_path, id: "logo" %>
+      <ul class="nav navbar-nav pull-right">
+        <li><%= link_to "Sign Up",    signup_path %></li>
+        <li><%= link_to "Log in",     '#' %></li>
+      </ul>
       <nav>
-        <ul class="nav nav-pills navbar-right">
-          <li><%= link_to "Home",       root_path %></li>
-          <li><%= link_to "Sign Up",    signup_path %></li>
-          <li><%= link_to "Log in",     '#' %></li>
+        <ul class="nav nav-pills nav-justified">
+          <li role="presentation" class="active">
+          <%= link_to "Home", root_path %></li>
+          <li role="presentation">
+          <%= link_to "All", 'google.ca' %></li>
+          <li role="presentation">
+          <%= link_to "Categories", 'google.ca' %></li>
         </ul>
+
       </nav>
     </div>
   </header>

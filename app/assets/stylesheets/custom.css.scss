@@ -4,11 +4,12 @@
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea;
+$white:             #FFFFFF;
 
 /* universal */
 
 body {
-  padding-top: 60px;
+  padding-top: 50px;
 }
 
 section {
@@ -40,7 +41,7 @@ h1 {
 }
 
 h2 {
-  font-size: 1.2em;
+  font-size: 1.5em;
   letter-spacing: -1px;
   margin-bottom: 30px;
   text-align: center;
@@ -56,17 +57,36 @@ p {
 
 /* header */
 
+header {
+  background-color: #FAF0E6;
+  opacity: .9;
+  height: 50px;
+}
+
+.nav-pills{
+  display: inline-block;
+  float: none;
+  text-align: center;
+  font-size: 1.6em;
+}
+
+.col-centered {
+  float:none;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 #logo {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: white;
+  color: #555555;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
   &:hover {
-    color: white;
+    color: $gray-light;
     text-decoration: none;
   }
 }
