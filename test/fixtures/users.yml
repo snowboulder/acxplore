@@ -4,3 +4,26 @@ lelouch:
   name: Lelouch Britannia
   email: britannia@gmail.com
   password_digest: <%= User.digest('password') %>
+  admin: true
+
+suzaku:
+  name: Suzaku Kururugi
+  email: lancelot@gmail.com
+  password_digest: <%= User.digest('password') %>
+
+charles:
+  name: Charles Britannia
+  email: 98themperor@hotmail.com
+  password_digest: <%= User.digest('password') %>
+
+albion:
+  name: Lancelot Albion
+  email: lancelotknightmare@gmail.com
+  password_digest: <%= User.digest('password') %>
+
+<% 30.times do |n| %>
+user_<%= n %>:
+  name:  <%= "User #{n}" %>
+  email: <%= "user-#{n}@example.com" %>
+  password_digest: <%= User.digest('password') %>
+<% end %>
