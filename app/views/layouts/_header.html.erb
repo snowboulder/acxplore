@@ -1,12 +1,28 @@
 <header class="navbar navbar-fixed-top navbar">
     <div class="container">
+      <%= link_to "Acxplore", root_path, id: "logo" %>
       <nav>
-        <%= link_to "Acxplore", root_path, id: "logo" %>
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "Sign Up",    signup_path %></li>
-          <li><%= link_to "Log in",     '#' %></li>
+          <% if logged_in? %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Account <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Profile", current_user %></li>
+                <li><%= link_to "Settings", "#" %></li>
+                <li class="divider"></li>
+                <li>
+                  <%= link_to "Log out", logout_path, method: "delete" %>
+                </li>
+              </ul>
+            </li>
+          <% else %>
+            <li><%= link_to "Sign Up",    signup_path %></li>
+            <li><%= link_to "Log in",     login_path %></li>
+          <% end %>
         </ul>
-        <ul class="nav nav-pills ">
+        <ul class="nav nav-pills">
           <li role="presentation" class="active">
           <%= link_to "Home", root_path %></li>
           <li role="presentation">
@@ -14,8 +30,6 @@
           <li role="presentation">
           <%= link_to "Categories", 'google.ca' %></li>
         </ul>
-
-        </nav>
-
+      </nav>
     </div>
   </header>
