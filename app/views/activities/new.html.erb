@@ -1,3 +1,52 @@
 <% provide(:title, 'Activities') %>
 <h1>All Activities</h1>
-<p>This will be the activities configuration page</p>
+
+ <div class="row">
+   <div class="col-md-6 col-md-offset-3">
+     <%= form_for(@activity) do |f| %>
+      <%= render 'shared/error_activity_messages' %>
+
+      <%= f.label :name, "Name of Activity" %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.label :group, "Group (Sporty/Leisure/Game)" %>
+      <%= f.text_field :group, class: 'form-control' %>
+
+      <%= f.label :subgroup, "Secondary Group"%>
+      <%= f.text_field :subgroup, class: 'form-control' %>
+
+      <%= f.label :description %>
+      <%= f.text_area :description, class: 'form-control', rows: '3' %>
+
+      <%= f.label :range, "Price Range (xx - xx)" %>
+      <div class="input-group">
+      <div class="input-group-addon">$</div>
+      <%= f.text_field :range, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3 col-md-offset-3">
+      <%= f.label :min_people, "Min. people required" %>
+      <%= f.text_field :min_people, class: 'form-control' %>
+    </div>
+    <div class="col-xs-3 col-md-3">
+      <%= f.label :max_people, "Max. people required" %>
+      <%= f.text_field :max_people, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= f.label :duration, "Duration (x h x mins - x h x mins)" %>
+      <%= f.text_field :duration, class: 'form-control' %>
+
+      <%= f.label :environment, "Environment (Indoor/Outdoor)" %>
+      <%= f.text_field :environment, class: 'form-control' %>
+
+      <%= f.label :season, "Season (All Season, Summer, Winter, Spring)" %>
+      <%= f.text_field :season, class: 'form-control' %>
+
+      <%= f.submit "Create Activity", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

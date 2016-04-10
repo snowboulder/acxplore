@@ -1,0 +1,33 @@
+<% provide(:title, @activity.name) %>
+<div class="jumbotron">
+<div>
+<h3><%= @activity.name %></h3>
+<p>
+</p>
+  <div class="row">
+    <div class="col-sm-9 col-md-9">
+      <div class="thumbnail">
+        <%= image_tag("bouldering.jpg") %>
+      </div>
+    </div>
+      <div class="col-sm-3 col-md-3">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Quick Bit</h3>
+          </div>
+          <div class="panel-body">
+            Price Range: <p class="text-left">$<%= @activity.range %></p>
+            Duration: <p class="text-left"><%= @activity.duration %></p>
+            Environment: <p class="text-left"><%= @activity.environment %></p>
+            Season:      <p class="text-left"><%= @activity.season %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm12 col-md-12">
+        <div class="well well-lg">
+          <%= @activity.description %>
+        </div>
+      </div>
+    </div>

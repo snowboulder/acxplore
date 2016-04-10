@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160406185041) do
+ActiveRecord::Schema.define(version: 20160410023556) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "name"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20160406185041) do
     t.string   "environment"
     t.string   "subgroup"
     t.string   "season"
+    t.integer  "min_people"
+    t.integer  "max_people"
   end
 
   add_index "activities", ["name"], name: "index_activities_on_name", unique: true
