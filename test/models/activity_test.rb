@@ -7,7 +7,7 @@ class ActivityTest < ActiveSupport::TestCase
                              description: "no ropes, no harness",
                              range: "15-30", duration: "2 Hours - 2 Hour 30 Mins",
                              environment: "Indoor", subgroup: "leisure",
-                             season: "All season")
+                             season: "All season", min_people: "3", max_people: "10")
   end
 
   test "should be valid" do
@@ -39,8 +39,8 @@ class ActivityTest < ActiveSupport::TestCase
     assert_not @activity.valid?
   end
 
-  test "description should have a maximum of 500 characters" do
-    @activity.description = "a" * 501
+  test "description should have a maximum of 1000 characters" do
+    @activity.description = "a" * 1001
     assert_not @activity.valid?
   end
 
@@ -83,11 +83,6 @@ class ActivityTest < ActiveSupport::TestCase
     assert_not @activity.valid?
   end
 
-  test "subgroup should be present" do
-    @activity.subgroup = "   "
-    assert_not @activity.valid?
-  end
-
   test "subgroup should not be too long" do
     @activity.subgroup = "a" * 51
     assert_not @activity.valid?
@@ -100,6 +95,26 @@ class ActivityTest < ActiveSupport::TestCase
 
   test "season should not be too long" do
     @activity.season = "a" * 51
+    assert_not @activity.valid?
+  end
+
+  test "Minimum number of people should have maximum of 2 digits" do
+    @activity.min_people = "123"
+    assert_not @activity.valid?
+  end
+
+  test "Minimum number should be present" do
+    @activity.min_people = ""
+    assert_not @activity.valid?
+  end
+
+  test "Minimum number of people should have a maximum  of 2 digits" do
+    @activity.max_people = "123"
+    assert_not @activity.valid?
+  end
+
+  test "Maximum number should be present" do
+    @activity.max_people = ""
     assert_not @activity.valid?
   end
 
