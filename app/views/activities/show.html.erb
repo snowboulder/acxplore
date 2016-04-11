@@ -23,6 +23,8 @@
           <div class="panel-body">
             Price Range: <p class="text-left">$<%= @activity.range %></p>
             Duration: <p class="text-left"><%= @activity.duration %></p>
+            Party size: <p class="text-left">
+              <%= @activity.min_people %>-<%= @activity.max_people %></p>
             Environment: <p class="text-left"><%= @activity.environment %></p>
             Season:      <p class="text-left"><%= @activity.season %>
           </div>
@@ -39,5 +41,5 @@
     <% if current_user.admin? %>
       <%= link_to "Delete Activity", @activity, method: :delete,
                                       data: { confirm: "Are you sure?" } %>
-      
+
     <% end %>
