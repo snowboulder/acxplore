@@ -20,11 +20,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     log_in_as(@admin)
     get root_path
     assert_select "a[href=?]", users_path
-<<<<<<< HEAD
-    #assert_select "a[href=?]", acreation_path
-=======
-    assert_select "a[href=?]", acreation_path
->>>>>>> activity-configuration
+    assert_select "a[href=?]", activities_path
   end
 
   test "non-admin layout links" do

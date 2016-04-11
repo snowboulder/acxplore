@@ -2,6 +2,11 @@
 <div class="jumbotron">
 <div>
 <h3><%= @activity.name %></h3>
+<% if current_user.admin? %>
+<a class="btn btn-warning" href="<%= edit_activity_path(@activity) %>" role="button">
+  Edit Activity
+</a>
+<% end %>
 <p>
 </p>
   <div class="row">
@@ -31,3 +36,8 @@
         </div>
       </div>
     </div>
+    <% if current_user.admin? %>
+      <%= link_to "Delete Activity", @activity, method: :delete,
+                                      data: { confirm: "Are you sure?" } %>
+      
+    <% end %>

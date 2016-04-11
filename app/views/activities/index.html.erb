@@ -1,0 +1,17 @@
+<% provide(:title, 'All Activities') %>
+<h1>All Activities</h1>
+<div>
+  <a class="btn btn-primary" href="<%= acreation_path %>" role="button">
+    Create New Activity
+  </a>
+</div>
+
+<%= will_paginate %>
+
+<ul class="activities">
+  <%# @activities.each do |activity| %>
+    <%= render @activities %>
+  <%# end %>
+</ul>
+
+<%= will_paginate %>

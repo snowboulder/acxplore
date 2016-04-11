@@ -3,11 +3,12 @@ require 'test_helper'
 class ActivityTest < ActiveSupport::TestCase
 
   def setup
-    @activity = Activity.new(name: "Bouldering", group: "Sporty",
-                             description: "no ropes, no harness",
-                             range: "15-30", duration: "2 Hours - 2 Hour 30 Mins",
-                             environment: "Indoor", subgroup: "leisure",
-                             season: "All season", min_people: "3", max_people: "10")
+    @activity = activities(:bouldering)
+    #@activity = Activity.new(name: "Bouldering", group: "Sporty",
+    #                         description: "no ropes, no harness",
+    #                         range: "15-30", duration: "2 Hours - 2 Hour 30 Mins",
+    #                         environment: "Indoor", subgroup: "Leisure",
+    #                         season: "All season", min_people: "3", max_people: "10")
   end
 
   test "should be valid" do
