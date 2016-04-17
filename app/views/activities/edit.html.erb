@@ -45,6 +45,10 @@
         <%= f.label :season, "Season (All Season, Summer, Winter, Spring)" %>
         <%= f.text_field :season, class: 'form-control' %>
 
+        <span class="picture">
+          <%= f.file_field :picture %>
+        </span>
+
         <%= f.submit "Save changes", class: "btn btn-primary" %>
       </div>
     </div>

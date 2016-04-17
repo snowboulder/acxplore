@@ -50,7 +50,7 @@ class ActivitiesController < ApplicationController
   def activity_params
     params.require(:activity).permit(:name, :group, :description, :subgroup,
                                      :range, :duration, :environment, :season,
-                                     :min_people, :max_people)
+                                     :min_people, :max_people, :picture)
   end
 
   # Confirms a logged-in user.
