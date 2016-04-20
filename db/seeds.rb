@@ -20,21 +20,25 @@ Activity.create!(name: "Bouldering",
                  range: "20-40",
                  duration: "2h - 2h 30 mins",
                  environment: "Indoor",
-                 season: "All Season")
+                 season: "All Season",
+                 min_people: "2",
+                 max_people: "10")
 
-99.times do |n|
-  name  = Faker::Team.name
-  group = "Sporty" || "Leisure" || "Game"
-  description = Faker::Lorem.paragraphs
-  range = "#{n+10}-#{n+20}"
-  duration = "#{n}h - #{n}h #{n*3-3}mins"
-  environment = Faker::Lorem.words
-  season = "Winter" || "Summer" || "All Season"
-  Activity.create!(name:        name,
-                   group:       group,
-                   description: description,
-                   range:       range,
-                   duration:    duration,
-                   environment: environment,
-                   season:      season)
-end
+# 99.times do |n|
+#   name  = Faker::Team.name
+#   group = "Sporty" || "Leisure" || "Game"
+#   description = Faker::Lorem.paragraphs
+#   range = "#{n+10}-#{n+20}"
+#   duration = "#{n}h - #{n}h #{n*3-3}mins"
+#   environment = Faker::Lorem.words
+#   season = "Winter" || "Summer" || "All Season"
+#   min_people = "2"
+#   max_people = "10"
+#   Activity.create!(name:        name,
+#                    group:       group,
+#                    description: description,
+#                    range:       range,
+#                    duration:    duration,
+#                    environment: environment,
+#                    season:      season)
+# end
