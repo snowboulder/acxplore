@@ -11,8 +11,9 @@ Rails.application.routes.draw do
   delete 'logout'      => 'sessions#destroy'
   get    'acreation'   => 'activities#new'
   resources :users
-  resources :activities
-
+  resources :activities do
+    resources :activity_pictures
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
