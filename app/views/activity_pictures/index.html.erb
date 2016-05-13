@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Activity Pictures</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Activity</th>
+      <th>Picture</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @activity_pictures.each do |activity_picture| %>
+      <tr>
+        <td><%= activity_picture.activity_id %></td>
+        <td><%= activity_picture.picture %></td>
+        <td><%= link_to 'Show', activity_picture %></td>
+        <td><%= link_to 'Edit', edit_activity_picture_path(activity_picture) %></td>
+        <td><%= link_to 'Destroy', activity_picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Activity picture', new_activity_picture_path %>

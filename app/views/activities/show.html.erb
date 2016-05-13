@@ -1,46 +1,57 @@
 <% provide(:title, @activity.name) %>
 <div class="jumbotron">
-<div>
-<h3><%= @activity.name %></h3>
-<% if current_user.admin? %>
-<a class="btn btn-warning" href="<%= edit_activity_path(@activity) %>" role="button">
-  Edit Activity
-</a>
-<% end %>
-<p>
-</p>
-  <div class="row">
-    <div class="col-sm-9 col-md-9">
-      <div class="thumbnail">
-        <%= image_tag @activity.picture.url if @activity.picture? %>
-      </div>
-    </div>
-      <div class="col-sm-3 col-md-3">
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">Quick Bit</h3>
-          </div>
-          <div class="panel-body">
-            Price Range: <p class="text-left">$<%= @activity.range %></p>
-            Duration: <p class="text-left"><%= @activity.duration %></p>
-            Party size: <p class="text-left">
-              <%= @activity.min_people %>-<%= @activity.max_people %></p>
-            Environment: <p class="text-left"><%= @activity.environment %></p>
-            Season:      <p class="text-left"><%= @activity.season %>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div>
+    <h3><%= @activity.name %></h3>
+    <% if current_user.admin? %>
+      <a class="btn btn-warning" href="<%= edit_activity_path(@activity) %>"
+      role="button">
+        Edit Activity
+      </a>
+      <a class="btn btn-warning"
+      href="<%= new_activity_picture_path(@activity_pictures) %>"
+      role="button">
+        Add Pictures
+      </a>
+    <% end %>
     <div class="row">
-      <div class="col-sm12 col-md-12">
-        <div class="well well-lg">
-          <dt> About </dt>
-          <%= @activity.description %>
+      <div class="col-sm-9 col-md-9">
+        <span class="thumbnail">
+          <%= image_tag @activity.avatar.url if @activity.avatar? %>
+          <%# @activity_pictures.each do |p| %>
+            <%# debug(params) if Rails.env.development? %>
+            <%# image_tag p.picture_url %>
+            <%# link_to "Edit Pictures", edit_activity_picture_path(p) %>
+          <%# end %>
+        </span>
+      </div>
+        <div class="col-sm-3 col-md-3">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Quick Bit</h3>
+            </div>
+            <div class="panel-body">
+              Price Range: <p class="text-left">$<%= @activity.range %></p>
+              Duration: <p class="text-left"><%= @activity.duration %></p>
+              Party size: <p class="text-left">
+                <%= @activity.min_people %>-<%= @activity.max_people %></p>
+              Environment: <p class="text-left"><%= @activity.environment %></p>
+              Season:      <p class="text-left"><%= @activity.season %>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+      <div class="row">
+        <div class="col-sm12 col-md-12">
+          <div class="well well-lg">
+            <dt> About </dt>
+            <%= @activity.description %>
+          </div>
+        </div>
+      </div>
     <% if current_user.admin? %>
       <%= link_to "Delete Activity", @activity, method: :delete,
-                                      data: { confirm: "Are you sure?" } %>
+                                        data: { confirm: "Are you sure?" } %>
 
     <% end %>
+  </div>
+</div>

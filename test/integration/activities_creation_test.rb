@@ -11,8 +11,7 @@ class ActivitiesCreationTest < ActionDispatch::IntegrationTest
     get acreation_path
     assert_no_difference 'Activity.count' do
       post activities_path, activity: { name:        "",
-                                        group:       "hey",
-                                        subgroup:    "foo",
+                                        note:        "foo",
                                         description: "bar",
                                         range:       "2345",
                                         environment: "sfea",
@@ -29,8 +28,7 @@ class ActivitiesCreationTest < ActionDispatch::IntegrationTest
     get acreation_path
     assert_difference 'Activity.count', 1 do
       post_via_redirect activities_path, activity: { name:        "Top-rope",
-                                                     group:       "Sporty",
-                                                     subgroup:    "ayyy",
+                                                     note:        "ayyy",
                                                      description: "With rope and harness",
                                                      range:       "20-40",
                                                      environment: "Indoor",

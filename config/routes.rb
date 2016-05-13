@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :activity_pictures
   root                    'home_page#home'
   get    'about'       => 'home_page#about'
   get    'contact'     => 'home_page#contact'

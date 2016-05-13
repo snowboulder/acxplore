@@ -20,18 +20,8 @@ class ActivityTest < ActiveSupport::TestCase
     assert_not @activity.valid?
   end
 
-  test "group should be present" do
-    @activity.group = "   "
-    assert_not @activity.valid?
-  end
-
   test "name should not be too long" do
     @activity.name = "a" * 51
-    assert_not @activity.valid?
-  end
-
-  test "group should not be too long" do
-    @activity.group = "a" * 51
     assert_not @activity.valid?
   end
 
@@ -84,8 +74,8 @@ class ActivityTest < ActiveSupport::TestCase
     assert_not @activity.valid?
   end
 
-  test "subgroup should not be too long" do
-    @activity.subgroup = "a" * 51
+  test "note should not be too long" do
+    @activity.note = "a" * 51
     assert_not @activity.valid?
   end
 

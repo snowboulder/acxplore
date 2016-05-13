@@ -4,6 +4,11 @@ User.create!(name:  "snowboulder",
              password_confirmation: "kd040409.",
              admin: true)
 
+Category.create [{name: "Sporty"},
+                 {name: "Game"},
+                 {name: "Leisure"},
+                 {name: "Recreation"}]
+
 99.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
@@ -15,7 +20,6 @@ User.create!(name:  "snowboulder",
 end
 
 Activity.create!(name: "Bouldering",
-                 group: "Sporty",
                  description: "No harness, rope. You climb with no limit!",
                  range: "20-40",
                  duration: "2h - 2h 30 mins",

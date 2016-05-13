@@ -1,0 +1,26 @@
+<%= form_for(@activity_picture, html: { multipart: true }) do |f| %>
+<%= render 'shared/error_activity_picture_messages' %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+  <div class="field">
+    <%= f.label :activity_id, "Activity ID" %><br>
+    <%= f.number_field :activity_id %>
+  </div>
+
+  <%= f.fields_for :activity_pictures do |p| %>
+    <div class="field">
+      <%= p.label :picture, "Activity Pictures" %><br>
+      <%= p.file_field :picture,
+                       multiple: true,
+                       accept: 'image/jpeg,image/gif,image/png',
+                       name: "activity_pictures[picture][]" %>
+    </div>
+  <% end %>
+
+  <%= f.submit "Upload Pictures", class: "btn btn-primary" %>
+
+  </div>
+</div>
+
+<% end %>

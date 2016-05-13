@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Activity:</strong>
+  <%= @activity_picture.activity_id %>
+</p>
+
+<p>
+  <strong>Picture:</strong>
+  <%= @activity_picture.picture %>
+</p>
+
+<%= link_to 'Edit', edit_activity_picture_path(@activity_picture) %> |
+<%= link_to 'Back', activity_pictures_path %>
