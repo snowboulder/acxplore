@@ -18,7 +18,7 @@ class GalleriesController < ApplicationController
 
   def create
     # Need gallery params for security, error: ParameterMissing
-    @gallery = Gallery.new(gallery_params2)
+    @gallery = Gallery.new(gallery_params)
     if @gallery.save
       params[:galleries]['picture'].each do |a|
         @gallery = @activity.galleries.create!(picture: a, activity_id: @activity_id)
@@ -34,7 +34,7 @@ class GalleriesController < ApplicationController
   def update
     @gallery = @activity.galleries.find(params[:id])
     # Need gallery params for security, error: ParameterMissing
-    if @gallery.update_attributes(gallery_params2)
+    if @gallery.update_attributes(gallery_params)
       flash[:success] = "Activity Gallery updated!"
       redirect_to activity_galleries_path(@activity)
     else
@@ -55,7 +55,7 @@ class GalleriesController < ApplicationController
     @activity = Activity.find(params[:activity_id])
   end
 
-  def gallery_params
+  def original_gallery_params
     params.require(:gallery).permit(:activity_id, :picture)
   end
 
@@ -63,7 +63,7 @@ class GalleriesController < ApplicationController
     params.fetch(:gallery).permit!
   end
 
-  def gallery_params2
+  def gallery_params
     params.permit(:picture)
   end
 
