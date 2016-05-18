@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Activity Pictures of <%= @activity.name %></h1>
+
+<a class="btn btn-default"
+href="<%= new_activity_gallery_path(@activity) %>"
+role="button">
+  Add Pictures
+</a>
+<br>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Picture</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @activity.galleries.each do |g| %>
+      <tr>
+        <td><%= g.id %></td>
+        <td><%= g.picture %> |</td>
+
+        <td><%= link_to 'Edit', edit_activity_gallery_path(@activity, g) %> |</td>
+        <td><%= link_to 'Delete', [@activity, g], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<a class="btn btn-default" href="<%= activity_path(@activity) %>" role="button">
+  Back
+</a>

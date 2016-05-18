@@ -1,0 +1,30 @@
+<h1>Edit Activity Picture</h1>
+
+<%= form_for([@activity, @gallery]) do |f| %>
+<%= render 'shared/error_messages', object: f.object %>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+    <%= f.fields_for :galleries do |p| %>
+      <div class="field">
+        <%= p.label :picture, "Activity Pictures" %><br>
+        <%= p.file_field :picture,
+                         accept: 'image/jpeg,image/gif,image/png',
+                         name: "galleries[picture][]" %>
+      </div>
+    <% end %>
+
+    <%= f.submit "Upload Pictures", class: "btn btn-primary" %>
+
+  </div>
+</div>
+
+<% end %>
+
+<br/>
+
+<a class="btn btn-default" href="<%= activity_path(@activity) %>"
+role="button">
+  Back
+</a>

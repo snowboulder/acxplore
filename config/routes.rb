@@ -12,8 +12,9 @@ Rails.application.routes.draw do
   get    'acreation'   => 'activities#new'
   resources :users
   resources :activities do
-    resources :activity_pictures
+    resources :galleries
   end
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

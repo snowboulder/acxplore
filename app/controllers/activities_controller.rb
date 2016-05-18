@@ -9,20 +9,17 @@ class ActivitiesController < ApplicationController
 
   def show
     @activity = Activity.find(params[:id])
-    @activity_pictures = @activity.activity_pictures.all
+    @gallery = @activity.galleries.all
   end
 
   def new
     @activity = Activity.new
-    @activity_picture = @activity.activity_pictures.build
+    @gallery = @activity.galleries.build
   end
 
   def create
     @activity = Activity.new(activity_params)
     if @activity.save
-      params[:activity_pictures]['picture'].each do |a|
-        @activity_picture = @activity.activity_pictures.create!(:picture => a)
-      end
       flash[:success] = "New Activity (#{@activity.name}) created!"
       redirect_to @activity
     else
@@ -53,12 +50,11 @@ class ActivitiesController < ApplicationController
   private
 
   def activity_params
-    params.require(:activity).permit(:name, :description, :note,
-                                     :range, :duration, :environment, :season,
+    params.require(:activity).permit(:name, :description, :duration,
+                                     :range, :environment, :season, :note,
                                      :min_people, :max_people, :avatar,
-                                     :category_ids => [],
-                                     activity_pictures_attributes:
-                                     [:id, :activity_id, :picture])
+                                     :category_ids => [])
+
   end
 
   # Confirms a logged-in user.

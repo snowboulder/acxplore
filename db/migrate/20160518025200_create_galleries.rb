@@ -1,6 +1,6 @@
-class CreateActivityPictures < ActiveRecord::Migration
+class CreateGalleries < ActiveRecord::Migration
   def change
-    create_table :activity_pictures do |t|
+    create_table :galleries do |t|
       t.integer :activity_id
       t.string :picture
 

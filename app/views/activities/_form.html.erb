@@ -1,5 +1,5 @@
-<%= form_for(@activity, html: { multipart: true }) do |f| %>
-<%= render 'shared/error_activity_messages' %>
+<%= form_for(@activity) do |f| %>
+ <%= render 'shared/error_messages', object: f.object %>
  <div class="row">
    <div class="col-md-6 col-md-offset-3">
 

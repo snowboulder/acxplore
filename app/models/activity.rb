@@ -1,7 +1,7 @@
 class Activity < ActiveRecord::Base
   has_and_belongs_to_many :categories
-  has_many :activity_pictures, dependent: :destroy
-  accepts_nested_attributes_for :activity_pictures, allow_destroy: true
+  has_many :galleries, dependent: :destroy
+  accepts_nested_attributes_for :galleries, allow_destroy: true
   mount_uploader :avatar, PictureUploader
   validates :name,        presence: true, length: { maximum: 50 },
                           uniqueness: { case_sensitive: false }

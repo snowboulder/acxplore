@@ -3,25 +3,31 @@
   <div>
     <h3><%= @activity.name %></h3>
     <% if current_user.admin? %>
+      <a class="btn btn-default"
+      href="<%= new_activity_gallery_path(@activity) %>"
+      role="button">
+        Add Pictures
+      </a>
+
+      <a class="btn btn-warning" href="<%= activity_galleries_path(@activity) %>"
+      role="button">
+        Edit Pictures
+      </a>
+
       <a class="btn btn-warning" href="<%= edit_activity_path(@activity) %>"
       role="button">
         Edit Activity
-      </a>
-      <a class="btn btn-warning"
-      href="<%= new_activity_picture_path(@activity_pictures) %>"
-      role="button">
-        Add Pictures
       </a>
     <% end %>
     <div class="row">
       <div class="col-sm-9 col-md-9">
         <span class="thumbnail">
-          <%= image_tag @activity.avatar.url if @activity.avatar? %>
-          <%# @activity_pictures.each do |p| %>
+          <%# image_tag @activity.avatar.url if @activity.avatar? %>
+          <% @activity.galleries.each do |p| %>
             <%# debug(params) if Rails.env.development? %>
-            <%# image_tag p.picture_url %>
+            <%= image_tag p.picture_url %>
             <%# link_to "Edit Pictures", edit_activity_picture_path(p) %>
-          <%# end %>
+          <% end %>
         </span>
       </div>
         <div class="col-sm-3 col-md-3">
