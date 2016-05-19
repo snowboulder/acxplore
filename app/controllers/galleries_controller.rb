@@ -1,5 +1,8 @@
 class GalleriesController < ApplicationController
   before_action :set_activity
+  before_action :logged_in_user, only: [:edit, :update, :index, :destroy]
+  # before_action :correct_user,   only: [:edit, :update, :index, :destroy]
+  before_action :admin_user,     only: [:edit, :update, :index, :destroy]
 
   def new
     @gallery = Gallery.new
@@ -13,11 +16,12 @@ class GalleriesController < ApplicationController
   end
 
   def index
+    #@gallery = @activity.galleries.find(params[:id])
     @galleries = @activity.galleries.all
   end
 
   def create
-    # Need gallery params for security, error: ParameterMissing
+    # Might need to update gallery_params to require :gallery
     @gallery = Gallery.new(gallery_params)
     if @gallery.save
       params[:galleries]['picture'].each do |a|
@@ -32,8 +36,8 @@ class GalleriesController < ApplicationController
   end
 
   def update
-    @gallery = @activity.galleries.find(params[:id])
-    # Need gallery params for security, error: ParameterMissing
+    @gallery = Gallery.find(params[:id])
+    # Might need to update gallery_params to require :gallery
     if @gallery.update_attributes(gallery_params)
       flash[:success] = "Activity Gallery updated!"
       redirect_to activity_galleries_path(@activity)
@@ -55,6 +59,10 @@ class GalleriesController < ApplicationController
     @activity = Activity.find(params[:activity_id])
   end
 
+  def gallery_params
+    params.permit(:activity, :picture)
+  end
+
   def original_gallery_params
     params.require(:gallery).permit(:activity_id, :picture)
   end
@@ -63,8 +71,23 @@ class GalleriesController < ApplicationController
     params.fetch(:gallery).permit!
   end
 
-  def gallery_params
-    params.permit(:picture)
-  end
+  # Confirms a logged-in user.
+    def logged_in_user
+      unless logged_in?
+        store_location
+        flash[:danger] = "Please log in."
+        redirect_to login_url
+      end
+    end
+
+    # Confirms the correct user.
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless current_user?(@user)
+    end
+
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
+    end
 
 end

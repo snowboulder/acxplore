@@ -3,21 +3,14 @@
   <div>
     <h3><%= @activity.name %></h3>
     <% if current_user.admin? %>
-      <a class="btn btn-default"
-      href="<%= new_activity_gallery_path(@activity) %>"
-      role="button">
-        Add Pictures
-      </a>
+      <%= link_to "Add Pictures", new_activity_gallery_path(@activity),
+        class: "btn btn-primary", role: "button" %>
 
-      <a class="btn btn-warning" href="<%= activity_galleries_path(@activity) %>"
-      role="button">
-        Edit Pictures
-      </a>
+      <%= link_to "Edit Pictures", activity_galleries_path(@activity),
+        class: "btn btn-warning", role: "button" %>
 
-      <a class="btn btn-warning" href="<%= edit_activity_path(@activity) %>"
-      role="button">
-        Edit Activity
-      </a>
+      <%= link_to "Edit Activity", edit_activity_path(@activity),
+        class: "btn btn-warning", role: "button" %>
     <% end %>
     <div class="row">
       <div class="col-sm-9 col-md-9">

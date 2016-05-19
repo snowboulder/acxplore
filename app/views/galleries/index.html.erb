@@ -1,38 +1,35 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Activity Pictures of <%= @activity.name %></h1>
 
-<a class="btn btn-default"
-href="<%= new_activity_gallery_path(@activity) %>"
-role="button">
-  Add Pictures
-</a>
-<br>
+<%= link_to "Add Pictures",new_activity_gallery_path(@activity),
+  class: "btn btn-primary", role: "button" %>
 
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Picture</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<%= link_to "Back", activity_path(@activity),
+  class: "btn btn-default", role: "button" %>
 
-  <tbody>
-    <% @activity.galleries.each do |g| %>
-      <tr>
-        <td><%= g.id %></td>
-        <td><%= g.picture %> |</td>
+<div class="jumbotron">
+  <% @activity.galleries.each_slice(3) do |group| %>
+    <div class="row">
+      <% group.each do |g| %>
+        <div class="col-sm-4 col-md-4">
+          <div class="thumbnail">
+            <%= image_tag g.picture_url if g %>
+              <div class="caption">
+                <div class="btn-group btn-group-justified" role="group" aria-label="">
+                  <%= link_to "Edit", edit_activity_gallery_path(@activity, g),
+                    class: "btn btn-warning", role: "button" %>
+                  <%= link_to "Delete", [@activity, g],
+                    method: :delete, data: { confirm: 'Are you sure?' },
+                    class: "btn btn-danger", role: "button" %>
+                </div>
+              </div>
+            </div>
+            <% (3 - group.length).times.each do |fake_div| %>
+            <div class="item empty">
+            </div>
+            <% end %>
 
-        <td><%= link_to 'Edit', edit_activity_gallery_path(@activity, g) %> |</td>
-        <td><%= link_to 'Delete', [@activity, g], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<a class="btn btn-default" href="<%= activity_path(@activity) %>" role="button">
-  Back
-</a>
+          </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

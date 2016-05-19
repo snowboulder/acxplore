@@ -1,30 +1,33 @@
 <h1>New Activity Pictures</h1>
 
 <%= form_for([@activity, @gallery], html: { multipart: true }) do |f| %>
-<%= render 'shared/error_messages', object: f.object %>
+  <%= render 'shared/error_messages', object: f.object %>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
 
-    <%= f.fields_for :galleries do |p| %>
-      <div class="field">
-        <%= p.label :picture, "Activity Pictures" %><br>
-        <%= p.file_field :picture,
-                         multiple: true,
-                         accept: 'image/jpeg,image/gif,image/png',
-                         name: "galleries[picture][]" %>
-      </div>
-    <% end %>
-
-    <%= f.submit "Upload Pictures", class: "btn btn-primary" %>
-
+      <%= f.fields_for :galleries do |p| %>
+        <div class="field">
+          <%= p.label :picture, "Activity Pictures" %><br>
+          <%= p.file_field :picture, multiple: true,
+                           accept: 'image/jpeg,image/gif,image/png',
+                           name: "galleries[picture][]" %>
+        </div>
+      <% end %>
+      <%= f.submit "Upload Pictures", class: "btn btn-primary" %>
+    </div>
   </div>
-</div>
-
 <% end %>
-
 <br>
+<%= link_to "Cancel", activity_path(@activity),
+  class: "btn btn-default", role: "button" %>
 
-<a class="btn btn-default" href="<%= activity_path(@activity) %>" role="button">
-  Cancel
-</a>
+<%# CLient-side validation for image size, using JavaScript (jQuery) %>
+<script type="text/javascript">
+  $('#gallery_picture').bind('change', function() {
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 5) {
+      alert('Maximum file size is 5MB. Please choose a smaller file.');
+    }
+  });
+</script>
