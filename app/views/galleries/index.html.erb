@@ -12,11 +12,13 @@
       <% group.each do |g| %>
         <div class="col-sm-4 col-md-4">
           <div class="thumbnail">
-            <%= image_tag g.picture_url if g %>
+            <%= link_to image_tag(g.picture_url), g.picture_url %>
               <div class="caption">
                 <div class="btn-group btn-group-justified" role="group" aria-label="">
-                  <%= link_to "Edit", edit_activity_gallery_path(@activity, g),
+                  <%# link_to "Edit", edit_activity_gallery_path(@activity, g),
                     class: "btn btn-warning", role: "button" %>
+                  <% link_to g.picture_url, popup: 'original image',
+                    class: "btn btn-default", role: "button" %>
                   <%= link_to "Delete", [@activity, g],
                     method: :delete, data: { confirm: 'Are you sure?' },
                     class: "btn btn-danger", role: "button" %>
