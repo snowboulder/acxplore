@@ -11,6 +11,8 @@ gem 'fog',                     '1.36.0'
 gem 'will_paginate',           '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
 gem 'bootstrap-sass',          '~> 3.3.6'
+gem 'lightbox2-rails',         '2.8.2.1'
+#gem 'lightbox-bootstrap-rails','3.3.0.3'
 
 # bootstrap-sass 3.2.0.0 for book version
 # Use SCSS for stylesheets 5.0.0 for book version
