@@ -1,8 +1,6 @@
 
 bouldering:
   name: Bouldering
-  group: Sporty
-  subgroup:
   description: no harness no rope
   range: 23-33
   duration: 1 h 30 mins
@@ -13,8 +11,6 @@ bouldering:
 
 snowboard:
   name: Snowboarding
-  group: Sporty
-  subgroup:
   description: Stand on a board
   range: 23-33
   duration: 1 h 30 mins
@@ -25,8 +21,6 @@ snowboard:
 
 skii:
   name: Skii
-  group: Sporty
-  subgroup:
   description: Stand on a 2 thin boards
   range: 23-44
   duration: 3 h 30 mins
@@ -38,8 +32,6 @@ skii:
 <% 30.times do |n| %>
 activity_<%= n %>:
   name:  <%= "Activity #{n}" %>
-  group: <%= "Sporty" || "Leisure" || "Game" %>
-  subgroup: <%= "Leisure" || "" %>
   description: <%= "asdfghjklpoiuytrewq" %>
   range: <%= "#{n}3-49" %>
   duration: <%= "#{n} h 30 mins" %>

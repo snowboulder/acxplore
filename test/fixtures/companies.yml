@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+bo:
+  name: Boulder Oasis
+  description: Oasis for rock climbers.
+  address: 355 Gerrard Avenue, Toronto ON
+  logo:
+  link: http://www.boulderoasis.com
+
+two:
+  name: MyString
+  description: MyText
+  address: MyString
+  logo: MyString
+  link: MyString
