@@ -10,6 +10,7 @@ suzaku:
   name: Suzaku Kururugi
   email: lancelot@gmail.com
   password_digest: <%= User.digest('password') %>
+  partner: true
 
 charles:
   name: Charles Britannia
