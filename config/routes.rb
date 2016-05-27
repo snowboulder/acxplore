@@ -11,10 +11,11 @@ Rails.application.routes.draw do
   delete 'logout'      => 'sessions#destroy'
   get    'acreation'   => 'activities#new'
   resources :users
+  resources :account_activations, only: [:edit]
   resources :activities do
     resources :galleries
   end
-  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
